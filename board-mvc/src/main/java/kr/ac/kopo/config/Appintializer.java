@@ -7,7 +7,7 @@ public class Appintializer extends AbstractAnnotationConfigDispatcherServletInit
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return null;
+		return new Class[] {DBConfig.class};
 	}
 
 	@Override
