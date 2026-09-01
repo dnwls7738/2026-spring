@@ -1,14 +1,19 @@
 package kr.ac.kopo.board.vo;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class BoardVO {
 	
 	/** 번호*/
 	private int no;
 	/** 제목*/
+	@NotEmpty(message = "필수항목입니다.")
 	private String title;
 	/** 작성자*/
+	@NotEmpty(message = "필수항목입니다.")
 	private String writer;
 	/** 내용*/
+	@NotEmpty(message = "필수항목입니다.")
 	private String content;
 	/** 조회수*/
 	private int viewCnt;
@@ -17,17 +22,17 @@ public class BoardVO {
 	
 	
 
+	public BoardVO() {
+
+	}
+
+	
 	public BoardVO(int no, String title, String writer, String regDate) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.writer = writer;
 		this.regDate = regDate;
-	}
-
-	
-	public BoardVO() {
-		// TODO Auto-generated constructor stub
 	}
 
 

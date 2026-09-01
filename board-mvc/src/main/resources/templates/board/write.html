@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>새글 등록</h2>
+	<form action="/board-mvc/board/write" method="post" th:object="${boardVO}">
+		<table border="1">
+			<tr>
+				<th>제목 1</th>
+				<td><input type="text" th:field="*{title}" /> <span
+					th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span></td>
+
+			</tr>
+			<tr>
+				<th>작성자</th>
+				<td><input type="text" th:field="*{writer}" /> <span
+					th:if="${#fields.hasErrors('writer')}" th:errors="*{writer}"></span>
+				</td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td><textarea rows="5" cols="10" th:field="*{content}"></textarea>
+					<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></span>
+				</td>
+			</tr>
+		</table>
+		<button type = "submit">등록</button>
+	</form>
+</body>
+</html>
