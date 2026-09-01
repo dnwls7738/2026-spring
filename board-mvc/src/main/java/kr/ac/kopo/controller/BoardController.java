@@ -53,7 +53,7 @@ public class BoardController {
 			return "board/write";
 		}
 		boardService.addNewBoard(board);
-		return "redirect;/board";		
+		return "redirect:/board";		
 	}
 	
 	
