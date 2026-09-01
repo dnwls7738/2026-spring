@@ -1,10 +1,16 @@
 package kr.ac.kopo.member.vo;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class MemberVO {
 	
+	@NotEmpty(message = "필수항목입니다.")
 	private String id;
+	@NotEmpty(message = "필수항목입니다.")
 	private String name;
+	@NotEmpty(message = "필수항목입니다.")
 	private String password;
+	
 	private String emailId;
 	private String emailDomain;
 	private String tel1;

@@ -3,6 +3,7 @@ package kr.ac.kopo.member.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +22,10 @@ public class MemberDAOImpl implements MemberDAO {
 	@Autowired
 	private DataSource ds;
 
+	// 회원 목록
 	@Override
 	public List<MemberVO> selectAll() {
-
-
+		
 		List<MemberVO> memberList = new ArrayList<>();
 		
 		Connection conn = null;
@@ -33,6 +34,7 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		String sql = "select id, name, password, email_id, email_domain, tel1, tel2, tel3, post, basic_addr, detail_addr, type, to_char(reg_date, 'yyyy-mm-dd') as regDate";
 			   sql += " from tbl_member";
+			   sql += " order by reg_date desc";
 			   
 		
 				try {
@@ -103,6 +105,56 @@ public class MemberDAOImpl implements MemberDAO {
 				}
 				
 		return memberList;
+	}
+
+	//회원가입
+	@Override
+	public void insert(MemberVO member) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "insert into tbl_member(id, name, password, email_id, email_domain, tel1, tel2, tel3, post, basic_addr, detail_addr) ";
+		sql += " values(?,?,?,?,?,?,?,?,?,?,?) ";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, member.getId());
+			pstmt.setString(2, member.getName());
+			pstmt.setString(3, member.getPassword());
+			pstmt.setString(4, member.getEmailId());
+			pstmt.setString(5, member.getEmailDomain());
+			pstmt.setString(6, member.getTel1());
+			pstmt.setString(7, member.getTel2());
+			pstmt.setString(8, member.getTel3());
+			pstmt.setString(9, member.getPost());
+			pstmt.setString(10, member.getBasicAddr());
+			pstmt.setString(11, member.getDetailAddr());
+
+			
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if(conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
 	}
 
 }

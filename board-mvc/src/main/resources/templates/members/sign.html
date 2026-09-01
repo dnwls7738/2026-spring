@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<body>
+	<h2>회원가입 조회</h2>
+
+	<form action="/board-mvc/members/sign" method="post"
+		th:object="${memberVO}">
+		<table border="1">
+			<tr>
+				<th>아이디</th>
+				<td><input type="text" th:field="*{id}" /> <span
+					th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span></td>
+			</tr>
+			<tr>
+				<th>이름</th>
+				<td><input type="text" th:field="*{name}" /> <span
+					th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span></td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				<td><input type="text" th:field="*{password}"> <span
+					th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+					</td>
+			</tr>
+			<tr>
+				<th>이메일ID</th>
+				<td><input th:field="*{emailId}"> <span
+					th:if="${#fields.hasErrors('emailId')}" th:errors="*{emailId}"></span>
+					</td>
+			</tr>
+			<tr>
+				<th>이메일도메인</th>
+				<td><input th:field="*{emailDomain}"/> <span
+					th:if="${#fields.hasErrors('emailDomain')}"
+					th:errors="*{emailDomain}"></span> </td>
+			</tr>
+			<tr>
+				<th>전화번호1</th>
+				<td><input th:field="*{tel1}"/> </td>
+			</tr>
+			<tr>
+				<th>전화번호2</th>
+				<td><input th:field="*{tel2}"/> </td>
+			</tr>
+			<tr>
+				<th>전화번호3</th>
+				<td><input th:field="*{tel3}"/> 
+					</td>
+			</tr>
+			<tr>
+				<th>우편번호</th>
+				<td><input th:field="*{post}"/>
+					</td>
+			</tr>
+			<tr>
+				<th>도,시,구</th>
+				<td><input th:field="*{basicAddr}" />
+</td>
+			</tr>
+			<tr>
+				<th>읍,면,동</th>
+				<td><input th:field="*{detailAddr}" /></td>
+			</tr>
+		</table>
+		<button type="submit">등록</button>
+	</form>
+</body>
+</html>
