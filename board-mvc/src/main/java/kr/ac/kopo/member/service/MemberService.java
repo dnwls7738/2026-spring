@@ -8,6 +8,9 @@ import kr.ac.kopo.member.vo.MemberVO;
 public interface MemberService {
 	
 	List<MemberVO> getMemberList() throws Exception;
+	
 	void addNewMember(MemberVO member) throws Exception;
+	
+	MemberVO getMemberById(String memberId) throws Exception;
 
 }

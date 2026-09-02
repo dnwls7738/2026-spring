@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -55,5 +56,12 @@ public class MemberController {
 		}
 		memberService.addNewMember(member);
 		return "redirect:/members";		
+	}
+	
+	@GetMapping("members/mypage/{id}")
+	public String mypage(@PathVariable("id") String memberId, Model model) throws Exception{
+		MemberVO member = memberService.getMemberById(memberId);
+		model.addAttribute("member", member);
+		return "members/mypage";
 	}
 }

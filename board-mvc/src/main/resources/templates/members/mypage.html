@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" >
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <h1>마이페이지</h1>
+<table border="1">
+		<tr>
+			<th>아이디</th>
+			<th>이름</th>
+			<th>비밀번호</th>
+			<th>이메일ID</th>
+			<th>이메일도메인</th>
+			<th>전화번호1</th>
+			<th>전화번호2</th>
+			<th>전화번호3</th>
+			<th>우편번호</th>
+			<th>도,시,구</th>
+			<th>읍,면,동</th>
+			<th>유저타입</th>
+			<th>생성날짜</th>
+		</tr>
+		<tr>
+			<th th:text="${member.id}"></th>
+			<th th:text="${member.name}"></th>
+			<th th:text="${member.password}"></th>
+			<th th:text="${member.emailId}"></th>
+			<th th:text="${member.emailDomain}"></th>
+			<th th:text="${member.tel1}"></th>
+			<th th:text="${member.tel2}"></th>
+			<th th:text="${member.tel3}"></th>
+			<th th:text="${member.post}"></th>
+			<th th:text="${member.basicAddr}"></th>
+			<th th:text="${member.detailAddr}"></th>
+			<th th:text="${member.type}"></th>
+			<th th:text="${member.regDate}"></th>
+
+		</tr>
+	</table>
 </body>
 </html>

@@ -9,4 +9,6 @@ public interface MemberDAO {
 	List<MemberVO> selectAll();
 	
 	void insert(MemberVO member);
+	
+	MemberVO selectById(String memberId);
 }

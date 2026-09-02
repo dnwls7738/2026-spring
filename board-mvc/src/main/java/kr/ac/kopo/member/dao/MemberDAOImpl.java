@@ -16,7 +16,7 @@ import kr.ac.kopo.member.vo.MemberVO;
 
 
 
-@Repository
+// @Repository
 public class MemberDAOImpl implements MemberDAO {
 	
 	@Autowired
@@ -155,6 +155,12 @@ public class MemberDAOImpl implements MemberDAO {
 			}
 		}
 		
+	}
+
+	@Override
+	public MemberVO selectById(String memberId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
