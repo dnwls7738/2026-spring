@@ -95,7 +95,7 @@ public class BoardDAOImpl implements BoardDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
-		String sql = "insert into tbl_board(no, title, writer, contnet) ";
+		String sql = "insert into tbl_board(no, title, writer, content) ";
 		sql += " values(seq_tbl_board_no.nextval, ?, ?, ?) ";
 
 		try {

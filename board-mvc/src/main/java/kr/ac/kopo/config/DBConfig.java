@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @MapperScan("kr.ac.kopo.mapper")
 @PropertySource("classpath:config/db.properties")
@@ -32,6 +33,8 @@ public class DBConfig {
 	@Value("${jdbc.password}")
 	private String password;
 
+	
+	// DB 접속 정보
 	@Bean
 	public DataSource dataSource() {
 		BasicDataSource ds = new BasicDataSource();
@@ -54,11 +57,15 @@ public class DBConfig {
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();	
 		factoryBean.setDataSource(dataSource);
 		
+		// xml mapper location
+		factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
+		
 		factoryBean.setTypeAliasesPackage("kr.ac.kopo.*.vo");
 		
 		return factoryBean.getObject();
 	}
 	
+	@Bean
 	public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
 		return new SqlSessionTemplate(sqlSessionFactory);
 	}
