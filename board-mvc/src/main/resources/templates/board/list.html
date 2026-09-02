@@ -17,19 +17,17 @@
 		</tr>
 		<tr th:each="board : ${boardList}">
 			<th th:text="${board.no}">번호</th>
-			<th th:text="${board.title}">제목</th>
+			<th><a th:text="${board.title}" th:href="@{/board/detail/{no} (no=${board.no})}"></a></th>
 			<th th:text="${board.writer}">작성자</th>
 			<th th:text="${board.regDate}">등록일</th>
 		</tr>
 	</table>
-	<button onclick = "gowrite()">새글등록</button>
+	<button onclick="gowrite()">새글등록</button>
 
 </body>
 <script type="text/javascript">
-
-let gowrite = function(){
-	location.href="/board-mvc/board/write"
-}
-
+	let gowrite = function() {
+		location.href = "/board-mvc/board/write"
+	}
 </script>
 </html>

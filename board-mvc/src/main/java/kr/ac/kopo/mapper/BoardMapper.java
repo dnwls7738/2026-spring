@@ -13,5 +13,11 @@ public interface BoardMapper {
 			""")
 	List<BoardVO> selectAll();
 	
+	@Select("""
+			select no, title,writer, content, view_cnt as vierCnt, to_char(reg_date, 'yyyy-mm-dd') as regDate from  tbl_board where no=#{no}
+			""")
+	BoardVO selectByNo(int boardNo); 
+	
+	// xml
 	void insert(BoardVO board);
 }

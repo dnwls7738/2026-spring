@@ -30,4 +30,10 @@ public class BoardDAOImpl03 implements BoardDAO {
 
 	}
 
+	@Override
+	public BoardVO selectByNo(int boardNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

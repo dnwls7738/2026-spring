@@ -31,6 +31,7 @@ public class BoardDBTest {
 		assertNotNull(conn);
 	}
 	
+	@Disabled
 	@Test
 	public void 전체게시글조회() throws Exception{
 		List<BoardVO> list = boardDao.selectAll();

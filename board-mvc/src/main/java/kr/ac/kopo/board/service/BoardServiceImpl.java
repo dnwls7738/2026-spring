@@ -27,4 +27,9 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
+	@Override
+	public BoardVO getBoardByBoardNo(int boardNo) throws Exception {
+		return boardDao.selectByNo(boardNo);
+	}
+
 }

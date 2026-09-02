@@ -134,4 +134,10 @@ public class BoardDAOImpl implements BoardDAO {
 
 	}
 
+	@Override
+	public BoardVO selectByNo(int boardNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
