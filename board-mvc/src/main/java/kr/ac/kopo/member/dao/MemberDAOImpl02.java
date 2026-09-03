@@ -35,4 +35,9 @@ public class MemberDAOImpl02 implements MemberDAO {
 		return memberMapper.selectById(memberId);
 	}
 
+	@Override
+	public MemberVO login(MemberVO loginVO) {
+		return memberMapper.login(loginVO);
+	}
+
 }

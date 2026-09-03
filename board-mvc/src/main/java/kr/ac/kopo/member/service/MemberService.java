@@ -12,5 +12,7 @@ public interface MemberService {
 	void addNewMember(MemberVO member) throws Exception;
 	
 	MemberVO getMemberById(String memberId) throws Exception;
+	
+	MemberVO checkMember(MemberVO memeber);
 
 }

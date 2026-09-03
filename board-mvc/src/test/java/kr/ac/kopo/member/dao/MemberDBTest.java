@@ -32,12 +32,22 @@ public class MemberDBTest {
 		assertNotNull(conn);
 	}
 	
-
+	@Disabled
 	@Test
 	public void 전체멤버조회() throws Exception{
 		List<MemberVO> list = memberDao.selectAll();
 		for(MemberVO member : list) {
 			System.out.println(member);
 		}
+	}
+	
+	@Test
+	public void 로그인() throws Exception{
+		MemberVO member = new MemberVO();
+		member.setId("dnwls7738");
+		member.setPassword("1234");
+		
+		assertNotNull(memberDao.login(member));
+		
 	}
 }

@@ -67,6 +67,7 @@ public class BoardController {
 		return "board/detail";
 	}
 	
+	//Rest
 	@GetMapping("board/detail/{no}")
 	public String deatil2(@PathVariable("no") int boardNo, Model model) throws Exception {
 		BoardVO board = boardService.getBoardByBoardNo(boardNo);

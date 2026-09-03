@@ -21,6 +21,9 @@ public interface MemberMapper {
 	// xml
 	void insert(MemberVO member);
 
+	@Select("""
+			select * from tbl_member where id = #{id} and password = #{password}
+			""")
+	MemberVO login(MemberVO loginVO);
 	
-
 }

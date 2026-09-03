@@ -163,4 +163,10 @@ public class MemberDAOImpl implements MemberDAO {
 		return null;
 	}
 
+	@Override
+	public MemberVO login(MemberVO loginVO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
