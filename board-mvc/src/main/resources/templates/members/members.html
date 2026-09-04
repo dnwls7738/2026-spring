@@ -16,7 +16,7 @@
 		</tr>
 		<tr th:each="member : ${memberList}">
 
-			<th><a th:text="${member.id}" th:href="@{/members/mypage/{id} (id=${member.id})}"></a></th>
+			<th th:text="${member.id}"></th>
 			<th th:text="${member.name}"></th>
 			<th th:text="${member.password}"></th>
 

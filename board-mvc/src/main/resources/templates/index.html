@@ -7,12 +7,17 @@
 <body>
 	<h1>Main page...</h1>
 	<h2 th:text="${msg}"></h2>
-	<p> 
-	user : <span th:text ="${session.userVO}"></span><br>
-		<a th:href="@{/board}">게시판</a>
-		<a th:href="@{/members}">회원게시판</a>
-		<a th:href="@{members/sign}">회원가입</a>
-		<a th:href="@{/login}">로그인</a>
+	<p>
+		<span th:if="${session.userVO == null}">
+			<a th:href="@{/login}">로그인</a>
+			<a th:href="@{members/sign}">회원가입</a>
+		</span>
+		<span th:unless="${session.userVO == null}">
+			<a th:href="@{logout}">로그아웃</a>
+	 		<a th:href="@{/members/mypage/{id} (id=${session.userVO.id})}" >마이페이지</a>
+		</span>
+ 	 		<a th:href="@{/board}">게시판</a>
+		<!-- <a th:href="@{/members}">회원게시판</a>  -->
 	</p>
-</body> 
+</body>
 </html>

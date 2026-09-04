@@ -7,6 +7,7 @@
 <body>
 	<h2>새글 등록</h2>
 	<form action="/board-mvc/board/write" method="post" th:object="${boardVO}">
+		<input type="hidden" value="${session.userVO.id}">
 		<table border="1">
 			<tr>
 				<th>제목 1</th>
@@ -16,13 +17,16 @@
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td><input type="text" th:field="*{writer}" /> <span
-					th:if="${#fields.hasErrors('writer')}" th:errors="*{writer}"></span>
+				<td>
+				<input type="text" th:value="${session.userVO.id}" readonly name="writer"/>
+				 <!-- <span th:field="${session.useVO.id}"> </span> -->
+				<span th:if="${#fields.hasErrors('writer')}" th:errors="*{writer}"></span>
 				</td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea rows="5" cols="10" th:field="*{content}"></textarea>
+				<td>
+					<textarea rows="5" cols="10" th:field="*{content}"></textarea>
 					<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></span>
 				</td>
 			</tr>
