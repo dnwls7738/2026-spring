@@ -32,4 +32,11 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.selectByNo(boardNo);
 	}
 
+	@Override
+	public void viewCount(int view) throws Exception {
+		 boardDao.viewCount(view);
+		
+	}
+
+
 }

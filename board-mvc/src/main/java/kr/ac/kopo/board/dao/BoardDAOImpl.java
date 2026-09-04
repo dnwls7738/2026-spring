@@ -140,4 +140,11 @@ public class BoardDAOImpl implements BoardDAO {
 		return null;
 	}
 
+
+	@Override
+	public void viewCount(int view) {
+		// TODO Auto-generated method stub
+	
+	}
+
 }

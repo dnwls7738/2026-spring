@@ -16,4 +16,8 @@
 		insert into tbl_board(no, title, writer, content) values(seq_tbl_board_no.nextval, #{title}, #{writer}, #{content})
 	</insert>
 	
+	<update id="viewCount" parameterType="int">
+		update tbl_board set view_cnt = view_cnt + 1 where no = #{no}
+	</update>
+	
 </mapper>

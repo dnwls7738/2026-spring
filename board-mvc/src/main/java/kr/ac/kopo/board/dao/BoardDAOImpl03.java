@@ -36,4 +36,9 @@ public class BoardDAOImpl03 implements BoardDAO {
 		return null;
 	}
 
+	@Override
+	public void viewCount(int view) {
+
+	}
+
 }

@@ -20,10 +20,14 @@ public interface BoardDAO {
 	 */
 	void insert(BoardVO board);
 	
+	
+	
 	/**
 	 * void 해당번호의 게시글 조회기능
 	 * @param boardNo 조회할번호
 	 * @return 조회된 게시글
 	 */
 	BoardVO selectByNo(int boardNo);
+
+	void viewCount(int view);
 }

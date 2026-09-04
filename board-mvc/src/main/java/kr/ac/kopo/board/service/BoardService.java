@@ -10,4 +10,6 @@ public interface BoardService {
 	List<BoardVO> getBoardList() throws Exception;
 	void addNewBoard(BoardVO board) throws Exception;
 	BoardVO getBoardByBoardNo(int boardNo) throws Exception;
+
+	void viewCount(int view) throws Exception;
 }

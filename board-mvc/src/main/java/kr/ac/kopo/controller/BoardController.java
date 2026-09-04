@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import kr.ac.kopo.board.service.BoardService;
 import kr.ac.kopo.board.vo.BoardVO;
+import kr.ac.kopo.member.vo.MemberVO;
 
 @Controller
 public class BoardController {
@@ -35,12 +37,26 @@ public class BoardController {
 	
 	// 새글등록폼
 //	@RequestMapping(value ="/board/write" , method = RequestMethod.GET)
-	@GetMapping("board/write")
-	public String wirteForm(Model model) {
-		System.out.println("get write");
-		model.addAttribute("boardVO", new BoardVO());
+//	@GetMapping("board/write")
+	public String writeForm(Model model, HttpSession session) {
+		// 세션에서 로그인 사용자 객체 가져오기
+		MemberVO user = (MemberVO) session.getAttribute("userVO");
 		
-		return "board/write";
+		if(user == null) {
+			return "redirect:/login";
+		}
+		
+		
+		BoardVO board = new BoardVO();
+		board.setWriter(user.getId());
+		
+		model.addAttribute("boardVO", board);
+		return "board/write3";
+	}
+	
+	@GetMapping("board/write")
+	public void writerForm(Model model) {
+		model.addAttribute("boardVO", new BoardVO());
 	}
 	
 	// 새글등록
@@ -57,22 +73,39 @@ public class BoardController {
 		return "redirect:/board";		
 	}
 	
+//	@GetMapping("/board/detail")
+//	public String viewCount(@RequestParam("no") int view, Model model) throws Exception{
+//		BoardVO board = boardService.viewConunt(view);
+//		model.addAttribute("board", board);
+//		
+//		return "board/detail";
+//	}
+	
+	
 	// 게시글 상세조회
 	// Query String
 //	@GetMapping("/board/detail")
 	public String detail(@RequestParam("no") int boardNo, Model model) throws Exception {
-//		System.out.println(boardNo);
+		// 조회수 증가
+		boardService.viewCount(boardNo);
+		// 게시글 조회
 		BoardVO board = boardService.getBoardByBoardNo(boardNo);
 		model.addAttribute("board", board);
 		return "board/detail";
 	}
 	
-	//Rest
+
+	//RestAPI
 	@GetMapping("board/detail/{no}")
 	public String deatil2(@PathVariable("no") int boardNo, Model model) throws Exception {
+		// 조회수 증가
+		boardService.viewCount(boardNo);
+		// 게시글 조회
 		BoardVO board = boardService.getBoardByBoardNo(boardNo);
 		model.addAttribute("board", board);
 		return "board/detail";
 	}
+	
+	
 	
 }

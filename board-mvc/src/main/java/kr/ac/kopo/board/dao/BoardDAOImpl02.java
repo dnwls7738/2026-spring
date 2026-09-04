@@ -39,4 +39,10 @@ public class BoardDAOImpl02 implements BoardDAO {
 		return boardMapper.selectByNo(boardNo);
 	}
 
+	@Override
+	public void viewCount(int view) {
+		 boardMapper.viewCount(view);
+		
+	}
+
 }
