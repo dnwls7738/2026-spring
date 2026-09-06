@@ -14,5 +14,7 @@ public interface MemberService {
 	MemberVO getMemberById(String memberId) throws Exception;
 	
 	MemberVO checkMember(MemberVO memeber);
+	
+
 
 }

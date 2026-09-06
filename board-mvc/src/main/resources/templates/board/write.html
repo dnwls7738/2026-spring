@@ -10,7 +10,7 @@
 		<input type="hidden" value="${session.userVO.id}">
 		<table border="1">
 			<tr>
-				<th>제목 1</th>
+				<th>제목</th>
 				<td><input type="text" th:field="*{title}" /> <span
 					th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span></td>
 

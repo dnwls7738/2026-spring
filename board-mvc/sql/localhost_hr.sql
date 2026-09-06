@@ -51,3 +51,17 @@ INSERT INTO tbl_member(id, name, password, email_id, email_domain, tel1,tel2,tel
 commit;
 
 SELECT * FROM TBL_MEMBER;
+
+
+-- 댓글 테이블 생성
+create table tbl_reply(
+no number(7) primary key
+, board_no number(5) not null
+, writer varchar2(200) not null
+, content varchar2(2000) not null
+, reg_date date default sysdate
+, constraint tbl_reply_board_no_fk foreign key(board_no)
+references tbl_board(no)
+);
+
+create sequence seq_tbl_reply_no nocache;

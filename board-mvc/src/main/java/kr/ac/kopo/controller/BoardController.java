@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -85,18 +87,19 @@ public class BoardController {
 	// 게시글 상세조회
 	// Query String
 //	@GetMapping("/board/detail")
-	public String detail(@RequestParam("no") int boardNo, Model model) throws Exception {
-		// 조회수 증가
-		boardService.viewCount(boardNo);
-		// 게시글 조회
-		BoardVO board = boardService.getBoardByBoardNo(boardNo);
-		model.addAttribute("board", board);
-		return "board/detail";
-	}
+//	public String detail(@RequestParam("no") int boardNo, Model model) throws Exception {
+//		// 조회수 증가
+//		boardService.viewCount(boardNo);
+//		// 게시글 조회
+//		BoardVO board = boardService.getBoardByBoardNo(boardNo);
+//		model.addAttribute("board", board);
+//		return "board/detail/";
+//	}
 	
 
 	//RestAPI
-	@GetMapping("board/detail/{no}")
+//	@RequestMapping("/board/{no}")
+	@GetMapping("/board/{no}")
 	public String deatil2(@PathVariable("no") int boardNo, Model model) throws Exception {
 		// 조회수 증가
 		boardService.viewCount(boardNo);
@@ -106,6 +109,15 @@ public class BoardController {
 		return "board/detail";
 	}
 	
-	
+	// 게시글 삭제
+	@ResponseBody
+	@DeleteMapping("/board/{no}")
+	public String delBoard(@PathVariable("no") int boardNo) throws Exception {
+		
+		boardService.deleteBoardByNo(boardNo);
+		System.out.println("게시글 번호 : " + boardNo );
+		
+		return null;
+	}
 	
 }

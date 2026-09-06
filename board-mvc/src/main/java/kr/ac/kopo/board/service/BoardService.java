@@ -12,4 +12,6 @@ public interface BoardService {
 	BoardVO getBoardByBoardNo(int boardNo) throws Exception;
 
 	void viewCount(int view) throws Exception;
+	
+	void deleteBoardByNo(int boardNo) throws Exception;
 }

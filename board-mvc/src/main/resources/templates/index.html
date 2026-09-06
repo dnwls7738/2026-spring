@@ -15,9 +15,10 @@
 		<span th:unless="${session.userVO == null}">
 			<a th:href="@{logout}">로그아웃</a>
 	 		<a th:href="@{/members/mypage/{id} (id=${session.userVO.id})}" >마이페이지</a>
-		</span>
- 	 		<a th:href="@{/board}">게시판</a>
+	 		<a th:href="@{/board}">게시판</a>
 		<!-- <a th:href="@{/members}">회원게시판</a>  -->
+		</span>
+
 	</p>
 </body>
 </html>

@@ -45,4 +45,10 @@ public class BoardDAOImpl02 implements BoardDAO {
 		
 	}
 
+	@Override
+	public void deleteBoard(int boardNo) {
+		boardMapper.deleteBoard(boardNo);
+		
+	}
+
 }

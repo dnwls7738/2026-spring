@@ -2,6 +2,7 @@ package kr.ac.kopo.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
 
 import kr.ac.kopo.board.vo.BoardVO;
@@ -21,4 +22,10 @@ public interface BoardMapper {
 	// xml
 	void insert(BoardVO board);
 	void viewCount(int view);
+	
+	
+	@Delete("""
+			delete from tbl_board where no = #{no}
+			""")
+	void deleteBoard(int boardNo);
 }

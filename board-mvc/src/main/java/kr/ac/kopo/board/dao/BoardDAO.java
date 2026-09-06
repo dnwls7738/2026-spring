@@ -30,4 +30,6 @@ public interface BoardDAO {
 	BoardVO selectByNo(int boardNo);
 
 	void viewCount(int view);
+	
+	void deleteBoard(int boardNo);
 }

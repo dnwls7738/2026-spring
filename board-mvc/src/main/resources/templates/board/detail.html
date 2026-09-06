@@ -4,6 +4,51 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script th:inline="javascript">
+
+	document.addEventListener("DOMContentLoaded", function() {
+		let listBtn = document.getElementById("lBtn")
+		const mBtn = document.getElementById("mBtn")
+		const dBtn = document.querySelector('#dBtn')
+
+		listBtn.addEventListener('click', function() {
+			location.href = /*[[@{/board}]]*/''
+		})
+
+		// 수정 이동
+		mBtn.addEventListener('click', function() {
+			location.href = [[@{board/modify/{no} (no=${board.no})}]]
+		})
+		
+		// 삭제 이동
+		dBtn.addEventListener('click', async function() {
+			//location.href = [[@{board/del/{no} (no=${board.no})}]]
+			
+			let response = await fetch([[@{/board/{no} (no=${board.no})}]],{
+				method : 'delete'		
+			})
+			
+			if(response.ok){
+				alert('[[${board.no}]]번 게시글 삭제 완료')
+				location.href = [[@{/board}]]
+			}
+		})
+		
+		//댓글
+		document.addEventListener('DOMContentLoaded', function(){
+			let replyAddBtn = documnet.getElementById("replyAddBtn")
+			replyAddBtn.addEventListener('click', function(){
+				let writer = document.replyForm.writer
+				let content = document.replyForm.content
+				
+				fetch([[@{/reply/{no} (no=${board.no})}]]),{
+					method : 'post'
+
+				}
+			})
+		})
+	})
+</script>
 <body>
 	<h1>상세게시글</h1>
 	<table border=1>
@@ -32,5 +77,15 @@
 			<td th:text=${board.regDate}></td>
 		</tr>
 	</table>
+	<button id="dBtn">삭제</button>
+	<button id="mBtn">수정</button>
+	<button id="lBtn">목록</button>
+	<form name="replyForm">
+	댓글 : <input type="text" name="content">
+	작성자 : <input type="text" name="writer">
+		<button type="button" id="replyAddBtn">댓글등록</button>
+	</form>
+
 </body>
+
 </html>

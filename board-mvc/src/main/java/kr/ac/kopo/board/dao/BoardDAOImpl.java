@@ -147,4 +147,10 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	}
 
+	@Override
+	public void deleteBoard(int boardNo) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
