@@ -61,7 +61,7 @@ no number(7) primary key
 , content varchar2(2000) not null
 , reg_date date default sysdate
 , constraint tbl_reply_board_no_fk foreign key(board_no)
-references tbl_board(no)
+references tbl_board(no) on delete cascade
 );
 
 create sequence seq_tbl_reply_no nocache;
